@@ -1,7 +1,17 @@
 process FASTQC {
 
+    tag "$reads"
+
+    input:
+    path reads
+
+    output:
+    path "*_fastqc.html"
+    path "*_fastqc.zip"
+
     script:
     """
-    echo "FastQC step running"
+    fastqc $reads
     """
 }
+
